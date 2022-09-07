@@ -22,19 +22,19 @@
                     <p>Escolha o modelo</p>
                     <div class="opcoes">
                         <div class="opcao modelo">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarModelo(this);">
                                 <img class="icone" src="./images/tshirt.png" alt="tshirt">
                             </div>
                             <p class="nome-da-opcao">T-shirt</p>
                         </div>
                         <div class="opcao modelo">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarModelo(this);">
                                 <img class="icone" src="./images/Camiseta.png" alt="camiseta">
                             </div>
                             <p class="nome-da-opcao">Camiseta</p>
                         </div>
                         <div class="opcao modelo">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarModelo(this);">
                                 <img class="icone" src="./images/Mangalonga.png" alt="manga longa">
                             </div>
                             <p class="nome-da-opcao">Manga longa</p>
@@ -45,19 +45,19 @@
                     <p>Escolha a gola</p>
                     <div class="opcoes">
                         <div class="opcao gola">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarGola(this);">
                                 <img class="icone" src="./images/GolaV.png" alt="gola-v">
                             </div>
                             <p class="nome-da-opcao">Gola V</p>
                         </div>
                         <div class="opcao gola">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarGola(this);">
                                 <img class="icone" src="./images/GolaRedonda.png" alt="gola redonda">
                             </div>
                             <p class="nome-da-opcao">Gola redonda</p>
                         </div>
                         <div class="opcao gola">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarGola(this);">
                                 <img class="icone" src="./images/GolaPolo.png" alt="gola polo">
                             </div>
                             <p class="nome-da-opcao">Gola polo</p>
@@ -68,19 +68,19 @@
                     <p>Escolha o tecido</p>
                     <div class="opcoes">
                         <div class="opcao tecido">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarTecido(this);">
                                 <img class="icone" src="./images/Seda.png" alt="seda">
                             </div>
                             <p class="nome-da-opcao">seda</p>
                         </div>
                         <div class="opcao tecido">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarTecido(this);">
                                 <img class="icone" src="./images/Algodão.png" alt="Algodão">
                             </div>
                             <p class="nome-da-opcao">Algodão</p>
                         </div>
                         <div class="opcao tecido">
-                            <div class="icone-fundo">
+                            <div class="icone-fundo" onclick="selecionarTecido(this);">
                                 <img class="icone" src="./images/Poliester.png" alt="Poliester">
                             </div>
                             <p class="nome-da-opcao">Poliéster</p>
@@ -89,9 +89,9 @@
                 </div>
                 <div class="secao imagem-de-referencia">
                     <p>Imagem de referência</p>
-                    <input type="text" placeholder="Insira o link" >
+                    <input type="text" placeholder="Insira o link">
                 </div>
-                <button class="botao-ativado">Confirmar pedido</button>
+                <button>Confirmar pedido</button>
             </div>
             <div class="ilustracao">
                 <img src="./images/ilustração.png" alt="ilustracao">
@@ -100,8 +100,8 @@
         <div class="base">
             <p>Últimos Pedidos</p>
             <ul class="ultimos-pedidos">
-                <li>
-                    <img src="./images/Blusa1.png" alt="Blusa1">
+                <!-- <li>
+                    <img class="imagem-pedido" src="./images/Blusa1.png" alt="Blusa1">
                     <p><strong>Criador: </strong>Agata</p>
                 </li>
                 <li>
@@ -119,9 +119,11 @@
                 <li>
                     <img src="./images/Blusa1.png" alt="Blusa1">
                     <p><strong>Criador: </strong>Agata</p>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
