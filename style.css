@@ -106,6 +106,7 @@ button{
 }
 
 .base{
+    background-color: #F2F2F2;
     padding: 30px 130px;
     max-width: 1366px;
     overflow-x: scroll;
