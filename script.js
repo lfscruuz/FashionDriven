@@ -12,7 +12,7 @@ let botao = document.querySelector('.botao');
 let input = document.querySelector('input');
 let pedidos = document.querySelector('.ultimos-pedidos');
 let pedidosAPI;
-let nome = prompt('Qual o seu nome?');
+let nome = prompt('QUAL O SEU NOME?');
 let pedidoEnviado = {
 	model: escolhaModelo,
 	neck: escolhaGola,
@@ -23,18 +23,31 @@ let pedidoEnviado = {
 }
 
 const promessa = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts');
-const envioPedido = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts');
+
 carregarPedidos();
 
 function carregarPedidos(){
     promessa.then(resposta);
 };
 
+function resposta(response){
+    pedidosAPI = response.data;
+    ultimosPedidos();
+};
+
+function tratarErro(erro){
+    if (erro.response.status == 404 || erro.response.status == 422){
+        alert('Ops, não conseguimos processar sua encomenda')
+    }
+}
+
 function mandarPedido(){  
+    const envioPedidos = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts', pedidoEnviado);
+    envioPedidos.catch(tratarErro)
     pedidos.innerHTML = ''
     if (ativarBotao){
         alert(`
-        Seu pedido foi encomendado:
+        CONFIRME SEU PEDIDO:
         Modelo: ${pedidoEnviado.model};
         Gola: ${pedidoEnviado.neck};
         Tecido: ${pedidoEnviado.material};
@@ -42,11 +55,6 @@ function mandarPedido(){
     }
     carregarPedidos();
 }
-
-function resposta(resposta){
-    pedidosAPI = resposta.data;
-    ultimosPedidos();
-};
 
 function selecionarModelo(escolha){
     modelos.forEach(element => {
@@ -79,7 +87,6 @@ function selecionarTecido(escolha){
     tecidoClasses = escolha.parentNode.classList;
     tecidoClasses.add('selecionado');
     ativarBotao();
-    
 }
 
 function validarURL(url) {
@@ -89,7 +96,6 @@ function validarURL(url) {
   }
 
 function linkarImagem(){
-
     if (!validarURL(imagem.value)){
         alert('Essa URL não é válida!');
     }else{
@@ -103,9 +109,14 @@ function linkarImagem(){
 }
 
 function ativarBotao(){
-    if (modeloClasses[2] == "selecionado" && golaClasses[2] == "selecionado" && tecidoClasses[2] == "selecionado" && imagem.value.length > 0){
-        linkarImagem();
+    for (let i = 0; i < 3; i++){
+        if (i == 2){
+            if (modeloClasses[i] == "selecionado" && golaClasses[i] == "selecionado" && tecidoClasses[i] == "selecionado" && imagem.value.length > 0){
+                linkarImagem();
+            }
+        }
     }
+    
 }
 
 function ultimosPedidos(){
@@ -117,8 +128,7 @@ function ultimosPedidos(){
         </li>
         `;
     }
-    console.log(pedidosAPI);
-    console.log(pedidos.innerHTML);
+    console.log('recarregou');
 }
 
 function encomendarPronta(encomenda){
@@ -130,10 +140,9 @@ function encomendarPronta(encomenda){
                 neck: pedidosAPI[i].neck,
                 material: pedidosAPI[i].material,
                 image: pedidosAPI[i].image,
-                owner: pedidosAPI[i].owner,
-                author: pedidosAPI[i].author
+                author: nome,
+                owner: pedidosAPI[i].owner
             }
-            console.log(pedidoEnviado)
             if(confirm('tem certeza de que quer encomendar essa camiseta?')){
                 mandarPedido();
             }
