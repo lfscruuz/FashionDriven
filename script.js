@@ -12,7 +12,8 @@ let botao = document.querySelector('.botao');
 let input = document.querySelector('input');
 let pedidos = document.querySelector('.ultimos-pedidos');
 let pedidosAPI;
-let nome = prompt('QUAL O SEU NOME?');
+// let nome = prompt('QUAL O SEU NOME?');
+let nome = 'luis'
 let pedidoEnviado = {
 	model: escolhaModelo,
 	neck: escolhaGola,
@@ -22,11 +23,10 @@ let pedidoEnviado = {
 	author: nome
 }
 
-const promessa = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts');
-
 carregarPedidos();
 
 function carregarPedidos(){
+    const promessa = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts');
     promessa.then(resposta);
 };
 
@@ -127,8 +127,8 @@ function ultimosPedidos(){
             <p><strong>Criador: </strong>${pedidosAPI[i].owner}</p>
         </li>
         `;
+        console.log(`foi casmisa ${i}`)
     }
-    console.log('recarregou');
 }
 
 function encomendarPronta(encomenda){
