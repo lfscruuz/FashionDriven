@@ -12,8 +12,7 @@ let botao = document.querySelector('.botao');
 let input = document.querySelector('input');
 let pedidos = document.querySelector('.ultimos-pedidos');
 let pedidosAPI;
-// let nome = prompt('QUAL O SEU NOME?');
-let nome = 'luis'
+let nome = prompt('QUAL O SEU NOME?');
 let pedidoEnviado = {
 	model: escolhaModelo,
 	neck: escolhaGola,
